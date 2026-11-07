@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#111b19">
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="This path is a little off the map. Return to Villagerr, the official home of DrVillagerr.">
+    <title>Page not found | Villagerr</title>
+    <style>
+      :root { color-scheme: dark; --ink: #111b19; --cream: #f2eee4; --mint: #bbd4a4; --muted: #aab8b0; }
+      * { box-sizing: border-box; }
+      body { min-height: 100svh; margin: 0; display: flex; flex-direction: column; color: var(--cream); background: radial-gradient(ellipse at 80% 60%, #243a3c 0, transparent 48%), radial-gradient(ellipse at 12% 90%, #3a3024 0, transparent 40%), var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      a { color: inherit; }
+      a:focus-visible { outline: 3px solid var(--mint); outline-offset: 7px; }
+      header, footer { width: min(1180px, calc(100% - 64px)); margin-inline: auto; }
+      header { padding-block: 32px; border-bottom: 1px solid #d8e5d51a; }
+      .brand { width: fit-content; display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 24px; font-weight: 750; letter-spacing: -1px; }
+      .brand svg { color: var(--mint); }
+      main { width: min(760px, calc(100% - 48px)); margin: auto; padding-block: 80px 100px; text-align: center; }
+      .error-code { display: inline-flex; align-items: center; gap: 9px; padding: 9px 14px; border: 1px solid #bbd4a438; border-radius: 999px; color: var(--mint); background: #bbd4a408; font-size: 11px; font-weight: 650; letter-spacing: 1.8px; text-transform: uppercase; }
+      .error-code::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+      .path { display: block; width: 210px; height: 88px; margin: 30px auto 22px; color: #93afb6; }
+      h1 { max-width: 700px; margin: 0 auto 24px; font-size: clamp(38px, 7.5vw, 72px); line-height: 1.06; font-weight: 650; letter-spacing: -.055em; text-wrap: balance; }
+      p { max-width: 430px; margin: 0 auto; color: var(--muted); font-size: 17px; line-height: 1.75; text-wrap: pretty; }
+      .home { display: inline-flex; align-items: center; justify-content: center; gap: 20px; min-height: 52px; margin-top: 34px; padding: 14px 24px; border: 1px solid var(--mint); border-radius: 7px; background: var(--mint); color: var(--ink); font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
+      .home:hover { background: #d1e3bf; transform: translateY(-2px); }
+      footer { display: flex; justify-content: space-between; gap: 24px; padding-block: 25px; border-top: 1px solid #d8e5d51a; color: var(--muted); font-size: 12px; line-height: 1.5; }
+      @media (max-width: 500px) { header, footer { width: calc(100% - 40px); } header { padding-block: 24px; } main { padding-block: 62px 76px; } footer { flex-direction: column; gap: 5px; } }
+      @media (prefers-reduced-motion: reduce) { .home { transition: none; } .home:hover { transform: none; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/" aria-label="Villagerr home">
+        <svg width="32" height="34" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 12 20 32 32 12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 17C20 7 27 5 34 6c-1 8-6 13-14 11Z" fill="currentColor"/></svg>
+        <span>villagerr<span aria-hidden="true" style="color:var(--mint)">.</span></span>
+      </a>
+    </header>
+    <main>
+      <span class="error-code">404 · Page not found</span>
+      <svg class="path" viewBox="0 0 210 88" fill="none" aria-hidden="true"><path d="M5 69c19-20 32-26 49-14s14 28 40 23 8-50 39-52 28 21 51-4" stroke="currentColor" stroke-width="1.5" stroke-dasharray="5 6" stroke-linecap="round"/><path d="M177 16l12 2-2 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 23v15m0-5c-7 0-10-5-10-10 6 0 10 3 10 10Zm0-6c0-6 4-9 10-9 0 6-4 9-10 9Z" stroke="#bbd4a4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h1>A little off the beaten path.</h1>
+      <p>The page you're looking for couldn't be found. Let's head back to familiar ground.</p>
+      <a class="home" href="/"><span aria-hidden="true">←</span> Back to Villagerr</a>
+    </main>
+    <footer><span>Villagerr · The official home of DrVillagerr</span><span>Every good adventure has a detour.</span></footer>
+  </body>
+</html>
