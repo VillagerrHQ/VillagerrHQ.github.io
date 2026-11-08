@@ -34,6 +34,7 @@ p, h1, h2, h3, figure { margin: 0; }
 .header-inner { display: flex; align-items: center; justify-content: space-between; min-height: 100px; gap: 32px; }
 .brand { display: inline-flex; gap: 8px; align-items: center; font-size: 29px; font-weight: 750; letter-spacing: -1.4px; line-height: 1; }
 .brand-mark { width: 36px; height: 38px; color: var(--green); }
+img.brand-mark { object-fit: contain; flex-shrink: 0; }
 .brand-period { color: var(--green); }
 .primary-nav { display: flex; align-items: center; gap: 35px; font-size: 13px; font-weight: 600; }
 .primary-nav a { position: relative; padding-block: 12px; transition: color .2s; }
@@ -89,6 +90,11 @@ h2 { font-size: clamp(32px, 3.3vw, 46px); line-height: 1.17; letter-spacing: -1.
 .about-copy .large-copy { font-size: 21px; color: var(--cream); line-height: 1.5; letter-spacing: -.3px; margin-bottom: 17px; }
 .about-copy > p { color: var(--muted); font-size: 13px; line-height: 1.85; }
 .about-copy > p + p { margin-top: 12px; }
+.intro-toggle { margin-top: 20px; min-width: 76px; min-height: 44px; padding: 8px 16px; border: 1px solid #64725c; border-radius: 5px; background: transparent; color: var(--green); font-size: 12px; font-weight: 650; cursor: pointer; transition: background .2s; }
+.intro-toggle:hover { background: #1d2b23; }
+.intro-expansion { overflow: hidden; }
+.intro-full { padding-top: 20px; color: var(--muted); font-size: 13px; line-height: 1.85; }
+.intro-full p + p { margin-top: 12px; }
 .topic-tags { display: flex; gap: 9px; flex-wrap: wrap; margin-top: 27px; }
 .topic-tags > span { display: inline-flex; align-items: center; gap: 7px; font-size: 10px; border: 1px solid var(--line); padding: 6px 12px; border-radius: 30px; }
 .tag-dot { width: 5px; height: 5px; border-radius: 50%; }

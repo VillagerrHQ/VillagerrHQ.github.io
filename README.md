@@ -6,6 +6,10 @@ Alpha 0.2 connects the supplied official YouTube, Twitch, and business email, an
 
 The hero uses an original generated Minecraft-style landscape, optimized as local WebP images at 600×650 and 1200×1300. It retains the existing frame proportions. Video thumbnails load from YouTube's official `i.ytimg.com` CDN, trying `maxresdefault`, then `sddefault` and `hqdefault` if needed. Their remote availability could not be verified in the build environment. Thumbnails load lazily, retain the original 16:9 card area, and show an unavailable state if all image options fail. No runtime metadata API, tracking script, or embed player is used.
 
+## Brand logo
+
+The supplied logo is preserved byte-for-byte at `assets/images/villagerr-logo-original.png`. Header and favicon assets are resized copies of that PNG, with its full canvas, colors, background, and proportions retained; nothing was redrawn, cropped, or regenerated. The homepage and custom 404 header use the optimized PNGs. Keep the original when replacing or re-exporting logo sizes.
+
 ## Preview locally
 
 From the repository root, run:

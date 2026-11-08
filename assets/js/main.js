@@ -45,6 +45,45 @@
     });
   }
 
+  const introToggle = document.querySelector("#intro-toggle");
+  const introExtra = document.querySelector("#intro-extra");
+  if (introToggle && introExtra) {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let introAnimation = null;
+    introToggle.hidden = false;
+    // A native button supplies keyboard and touch activation without custom key handlers.
+    introToggle.addEventListener("click", () => {
+      const expanded = introToggle.getAttribute("aria-expanded") !== "true";
+      const startHeight = introExtra.hidden ? 0 : introExtra.getBoundingClientRect().height;
+      if (introAnimation) introAnimation.cancel();
+      introAnimation = null;
+      introExtra.hidden = false;
+      introExtra.style.height = "auto";
+      const endHeight = expanded ? introExtra.scrollHeight : 0;
+      introToggle.setAttribute("aria-expanded", String(expanded));
+      introToggle.textContent = expanded ? "Less" : "More";
+      introExtra.setAttribute("aria-hidden", String(!expanded));
+      const finish = () => {
+        introExtra.hidden = !expanded;
+        introExtra.style.height = "";
+        introAnimation = null;
+      };
+      if (reducedMotion.matches || typeof introExtra.animate !== "function") {
+        finish();
+        return;
+      }
+      introExtra.style.height = expanded ? "auto" : "0px";
+      const animation = introExtra.animate(
+        [{ height: `${startHeight}px` }, { height: `${endHeight}px` }],
+        { duration: 280, easing: "cubic-bezier(.2,.7,.3,1)" }
+      );
+      introAnimation = animation;
+      animation.onfinish = () => {
+        if (introAnimation === animation) finish();
+      };
+    });
+  }
+
   // Accept HTTPS URLs only, on the expected platform; no executable URLs or lookalike domains.
   const platformUrl = (value, platform) => {
     if (typeof value !== "string" || !value.trim()) return null;
