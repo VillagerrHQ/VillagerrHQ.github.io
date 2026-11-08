@@ -117,20 +117,39 @@
       entry.rel = "noopener noreferrer";
       entry.setAttribute("aria-label", `Watch ${video.title.trim()} on YouTube (opens in a new tab)`);
       const art = template.cloneNode(true);
+      art.querySelectorAll("img").forEach((image) => image.remove());
       art.className = `video-art ${["video-art-forest", "video-art-blue", "video-art-brown"][index % 3]}`;
       art.querySelector(".slot-number").textContent = String(index + 1).padStart(2, "0");
-      // Thumbnails are local to this site; external tracking/image services are unnecessary.
+      // Allow local assets and YouTube's own thumbnail CDN for these video IDs.
       if (typeof video.thumbnail === "string" && video.thumbnail.trim()) {
         try {
           const thumbnailUrl = new URL(video.thumbnail, document.baseURI);
-          if (thumbnailUrl.origin === window.location.origin && ["http:", "https:", "file:"].includes(thumbnailUrl.protocol)) {
+          const videoUrl = new URL(entry.href);
+          const videoId = videoUrl.hostname === "youtu.be" ? videoUrl.pathname.slice(1) : videoUrl.searchParams.get("v");
+          const isYouTubeThumbnail = thumbnailUrl.protocol === "https:" && thumbnailUrl.hostname === "i.ytimg.com" && !thumbnailUrl.username && !thumbnailUrl.password && !thumbnailUrl.port && thumbnailUrl.pathname === `/vi/${videoId}/maxresdefault.jpg`;
+          const isLocalThumbnail = thumbnailUrl.origin === window.location.origin && ["http:", "https:", "file:"].includes(thumbnailUrl.protocol);
+          if (isLocalThumbnail || isYouTubeThumbnail) {
             const thumbnail = document.createElement("img");
-            thumbnail.src = thumbnailUrl.href;
             thumbnail.alt = "";
             thumbnail.loading = "lazy";
-            thumbnail.width = 640;
-            thumbnail.height = 360;
-            thumbnail.addEventListener("error", () => thumbnail.remove(), { once: true });
+            thumbnail.decoding = "async";
+            thumbnail.width = 1280;
+            thumbnail.height = 720;
+            const sources = isYouTubeThumbnail
+              ? [thumbnailUrl.href, `https://i.ytimg.com/vi/${videoId}/sddefault.jpg`, `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`]
+              : [thumbnailUrl.href];
+            let sourceIndex = 0;
+            const nextSource = () => {
+              sourceIndex++;
+              if (sourceIndex < sources.length) thumbnail.src = sources[sourceIndex];
+              else thumbnail.remove();
+            };
+            thumbnail.addEventListener("error", nextSource);
+            thumbnail.addEventListener("load", () => {
+              // YouTube may return a 120px fallback even for an unavailable high-res image.
+              if (isYouTubeThumbnail && thumbnail.naturalWidth < 480) nextSource();
+            });
+            thumbnail.src = sources[0];
             art.append(thumbnail);
           }
         } catch { /* Retain the explicit thumbnail placeholder. */ }
@@ -150,8 +169,8 @@
       return card;
     });
     grid.replaceChildren(...cards);
-    document.querySelector("#video-placeholder-note").hidden = true;
-    document.querySelector(".section-chip").hidden = true;
+    document.querySelector("#video-placeholder-note")?.setAttribute("hidden", "");
+    document.querySelector(".section-chip")?.setAttribute("hidden", "");
     document.querySelector("#videos .section-heading p").textContent = "A few good places to start. Settle in and find your next watch.";
   }
 

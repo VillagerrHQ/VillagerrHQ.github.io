@@ -1,6 +1,10 @@
-# Villagerr — Alpha
+# Villagerr — Alpha 0.2
 
-The official website of **DrVillagerr**, a gaming and variety content creator. This first Alpha is a responsive, static website built with HTML, CSS, and JavaScript. It needs no build step, backend, package installation, or paid service.
+The official website of **DrVillagerr**, a gaming and variety content creator. This Alpha is a responsive, static website built with HTML, CSS, and JavaScript. It needs no build step, backend, package installation, or paid service.
+
+Alpha 0.2 connects the supplied official YouTube, Twitch, and business email, and features the three supplied videos in their requested order. Video titles are explicitly temporary because YouTube metadata retrieval was blocked in the build environment; they are not guessed titles. To finish them, supply the exact titles in `assets/js/config.js` and the matching no-JavaScript content in `index.html`.
+
+The hero uses an original generated Minecraft-style landscape, optimized as local WebP images at 600×650 and 1200×1300. It retains the existing frame proportions. Video thumbnails load from YouTube's official `i.ytimg.com` CDN, trying `maxresdefault`, then `sddefault` and `hqdefault` if needed. Their remote availability could not be verified in the build environment. Thumbnails load lazily, retain the original 16:9 card area, and show an unavailable state if all image options fail. No runtime metadata API, tracking script, or embed player is used.
 
 ## Preview locally
 
@@ -16,7 +20,7 @@ Preview the custom error page at <http://localhost:8000/404.html>. Python's basi
 
 ## Add official content
 
-Missing content is deliberately labeled. No channel URLs, video titles, subscriber counts, achievements, or contact address have been invented.
+Unverified video titles remain labeled as pending. The channel URLs, video URLs, and contact address were supplied by DrVillagerr; no subscriber counts or achievements have been invented.
 
 Edit `assets/js/config.js` to add the confirmed details:
 
@@ -25,9 +29,9 @@ Edit `assets/js/config.js` to add the confirmed details:
 | `youtubeUrl` | The full official YouTube channel URL. |
 | `twitchUrl` | The full official Twitch channel URL. |
 | `businessEmail` | The confirmed public business email address. |
-| `featuredVideos` | Up to six video objects with `title` and `url`; local `thumbnail` and `category` are optional. |
+| `featuredVideos` | The three featured video objects with `title` and `url`; `thumbnail` and `category` are optional. |
 
-Leave unconfirmed fields empty. Use full HTTPS URLs for external links. Put owned or licensed images in `assets/` and use local paths for thumbnails, for example `assets/images/your-thumbnail.jpg`. Replace the clearly labeled artwork placeholders with official imagery when available, and give meaningful images appropriate alternative text.
+Leave unconfirmed fields empty. Use full HTTPS URLs for external links. Put owned or licensed images in `assets/` and use local paths for thumbnails, for example `assets/images/your-thumbnail.jpg`, or the configured official YouTube CDN URL for that video. Give meaningful images appropriate alternative text. Confirmed links and videos are also present in `index.html`, so navigation and business contact work without JavaScript; keep those in sync when updating content.
 
 To add a video, place an object inside `featuredVideos`. The following is a template to fill with real details, not a ready-to-use video:
 
