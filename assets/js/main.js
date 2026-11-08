@@ -47,24 +47,31 @@
 
   const introToggle = document.querySelector("#intro-toggle");
   const introExtra = document.querySelector("#intro-extra");
-  if (introToggle && introExtra) {
+  const introDisclosure = document.querySelector("#intro-disclosure");
+  if (introToggle && introExtra && introDisclosure) {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let introAnimation = null;
-    introToggle.hidden = false;
-    // A native button supplies keyboard and touch activation without custom key handlers.
-    introToggle.addEventListener("click", () => {
-      const expanded = introToggle.getAttribute("aria-expanded") !== "true";
-      const startHeight = introExtra.hidden ? 0 : introExtra.getBoundingClientRect().height;
+    let introExpanded = introDisclosure.open;
+    const updateIntroLabel = () => {
+      introToggle.setAttribute("aria-expanded", String(introExpanded));
+      introToggle.textContent = introExpanded ? "Less ↑" : "More ↓";
+    };
+    updateIntroLabel();
+    // The native disclosure remains keyboard/touch accessible even without this enhancement.
+    introToggle.addEventListener("click", (event) => {
+      event.preventDefault();
+      const expanded = !introExpanded;
+      const startHeight = introDisclosure.open ? introExtra.getBoundingClientRect().height : 0;
       if (introAnimation) introAnimation.cancel();
       introAnimation = null;
-      introExtra.hidden = false;
+      introDisclosure.open = true;
       introExtra.style.height = "auto";
       const endHeight = expanded ? introExtra.scrollHeight : 0;
-      introToggle.setAttribute("aria-expanded", String(expanded));
-      introToggle.textContent = expanded ? "Less" : "More";
+      introExpanded = expanded;
+      updateIntroLabel();
       introExtra.setAttribute("aria-hidden", String(!expanded));
       const finish = () => {
-        introExtra.hidden = !expanded;
+        introDisclosure.open = expanded;
         introExtra.style.height = "";
         introAnimation = null;
       };
@@ -81,6 +88,12 @@
       animation.onfinish = () => {
         if (introAnimation === animation) finish();
       };
+    });
+    introDisclosure.addEventListener("toggle", () => {
+      if (introAnimation) return;
+      introExpanded = introDisclosure.open;
+      introExtra.setAttribute("aria-hidden", String(!introExpanded));
+      updateIntroLabel();
     });
   }
 

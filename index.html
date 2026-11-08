@@ -17,16 +17,16 @@
     <link rel="icon" href="./assets/images/favicon-32.png" type="image/png" sizes="32x32">
     <link rel="icon" href="./assets/images/favicon-64.png" type="image/png" sizes="64x64">
     <link rel="shortcut icon" href="./favicon.ico">
-    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css?v=alpha-0.2-intro-2">
     <script src="./assets/js/config.js" defer></script>
-    <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/main.js?v=alpha-0.2-intro-2" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="container header-inner">
         <a class="brand" href="./" aria-label="Villagerr home">
-          <img class="brand-mark" src="./assets/images/villagerr-logo-96.png" srcset="./assets/images/villagerr-logo-96.png 96w, ./assets/images/villagerr-logo-192.png 192w" sizes="(max-width: 650px) 32px, 36px" width="96" height="96" alt="" decoding="async">
+          <img class="brand-mark" src="./assets/images/villagerr-logo-transparent-96.png" srcset="./assets/images/villagerr-logo-transparent-96.png 96w, ./assets/images/villagerr-logo-transparent-192.png 192w" sizes="(max-width: 650px) 32px, 36px" width="96" height="96" alt="" decoding="async">
           <span>villagerr<span class="brand-period">.</span></span>
         </a>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation"><span class="menu-label">Menu</span><span class="menu-lines" aria-hidden="true"></span></button>
@@ -71,17 +71,19 @@
         <div class="about-grid">
           <div><h2 id="about-heading">Hey, I’m<br><span class="serif-word">DrVillagerr.</span></h2><p class="small-caption">The person behind Villagerr.</p></div>
           <div class="about-copy"><p class="large-copy">A gaming and variety creator.<br>Always room for another adventure.</p><p>Villagerr brings it all together: a home for the videos, a path to the streams, and a place to connect beyond the game.</p><p>Whether you’re here for your favorite game or something a little different, pull up a chair. There’s more to explore.</p>
-            <button class="intro-toggle" id="intro-toggle" type="button" aria-expanded="false" aria-controls="intro-extra" hidden>More</button>
-            <div class="intro-expansion" id="intro-extra" hidden>
-              <div class="intro-full">
-                <p>Hey! I'm DrVillagerr. Just a villager with a love for gaming, ridiculous ideas, and making people laugh.</p>
+            <p class="intro-summary">Hey! I'm DrVillagerr. Just a villager with a love for gaming, ridiculous ideas, and making people laugh.</p>
+            <details class="intro-disclosure" id="intro-disclosure">
+              <summary class="intro-toggle" id="intro-toggle" aria-controls="intro-extra"><span class="intro-more">More ↓</span><span class="intro-less">Less ↑</span></summary>
+              <div class="intro-expansion" id="intro-extra">
+                <div class="intro-full">
                 <p>It all started with one simple thought: 'What if I shared my gameplay with others, and we could have fun together?' I was already spending my time adding crazy mods to Minecraft, experimenting with random ideas, and seeing just how chaotic things could get. Then I figured, why keep all the fun to myself?</p>
                 <p>What began with Minecraft has turned into a passion for creating videos, trying new games, taking on ridiculous challenges, and making moments that nobody could have predicted. Sometimes things go exactly as planned. Most of the time, they don't. And honestly, that's what makes it fun.</p>
                 <p>But my favorite part isn't just playing games. It's the people I get to share those moments with. Whether you're watching a video, joining a livestream, or just discovering my channel for the first time, I want you to feel like you're hanging out with a friend.</p>
                 <p>And hey, why not become a Villagerr too? Join the fun, meet some awesome people, and become part of a community where everyone is welcome. There's always room for one more Villagerr!</p>
                 <p>Just a villager.</p>
+                </div>
               </div>
-            </div>
+            </details>
             <div class="topic-tags" aria-label="Content themes"><span><i class="tag-dot green" aria-hidden="true"></i>Gaming</span><span><i class="tag-dot blue" aria-hidden="true"></i>Variety</span><span><i class="tag-dot brown" aria-hidden="true"></i>Whatever’s next</span></div></div>
         </div>
       </section>
@@ -112,6 +114,6 @@
       </section>
     </main>
 
-    <footer class="site-footer container"><div class="footer-top"><a class="brand" href="./" aria-label="Villagerr home"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 12 20 32 32 12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 17C20 7 27 5 34 6c-1 8-6 13-14 11Z" fill="currentColor"/></svg><span>villagerr<span class="brand-period">.</span></span></a><p>A little gaming. A lot of good company.</p><a class="back-top" href="#main">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom"><p>© <span id="copyright-year">2026</span> Villagerr. The official home of DrVillagerr.</p><span class="alpha-badge"><span aria-hidden="true">✳</span> A little beginning. Alpha 0.2</span></div></footer>
+    <footer class="site-footer container"><div class="footer-top"><a class="brand" href="./" aria-label="Villagerr home"><img class="brand-mark" src="./assets/images/villagerr-logo-transparent-96.png" srcset="./assets/images/villagerr-logo-transparent-96.png 96w, ./assets/images/villagerr-logo-transparent-192.png 192w" sizes="30px" width="96" height="96" alt="" decoding="async"><span>villagerr<span class="brand-period">.</span></span></a><p>A little gaming. A lot of good company.</p><a class="back-top" href="#main">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom"><p>© <span id="copyright-year">2026</span> Villagerr. The official home of DrVillagerr.</p><span class="alpha-badge"><span aria-hidden="true">✳</span> A little beginning. Alpha 0.2</span></div></footer>
   </body>
 </html>

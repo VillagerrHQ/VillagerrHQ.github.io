@@ -90,7 +90,12 @@ h2 { font-size: clamp(32px, 3.3vw, 46px); line-height: 1.17; letter-spacing: -1.
 .about-copy .large-copy { font-size: 21px; color: var(--cream); line-height: 1.5; letter-spacing: -.3px; margin-bottom: 17px; }
 .about-copy > p { color: var(--muted); font-size: 13px; line-height: 1.85; }
 .about-copy > p + p { margin-top: 12px; }
-.intro-toggle { margin-top: 20px; min-width: 76px; min-height: 44px; padding: 8px 16px; border: 1px solid #64725c; border-radius: 5px; background: transparent; color: var(--green); font-size: 12px; font-weight: 650; cursor: pointer; transition: background .2s; }
+.intro-toggle { display: inline-flex; align-items: center; margin-top: 20px; min-width: 76px; min-height: 44px; padding: 8px 16px; border: 1px solid #64725c; border-radius: 5px; background: transparent; color: var(--green); font-size: 12px; font-weight: 650; cursor: pointer; list-style: none; transition: background .2s; }
+.intro-toggle::-webkit-details-marker { display: none; }
+.intro-toggle:focus-visible { outline: 3px solid var(--green); outline-offset: 6px; }
+.intro-less { display: none; }
+.intro-disclosure[open] > .intro-toggle .intro-more { display: none; }
+.intro-disclosure[open] > .intro-toggle .intro-less { display: inline; }
 .intro-toggle:hover { background: #1d2b23; }
 .intro-expansion { overflow: hidden; }
 .intro-full { padding-top: 20px; color: var(--muted); font-size: 13px; line-height: 1.85; }

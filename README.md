@@ -8,7 +8,7 @@ The hero uses an original generated Minecraft-style landscape, optimized as loca
 
 ## Brand logo
 
-The supplied logo is preserved byte-for-byte at `assets/images/villagerr-logo-original.png`. Header and favicon assets are resized copies of that PNG, with its full canvas, colors, background, and proportions retained; nothing was redrawn, cropped, or regenerated. The homepage and custom 404 header use the optimized PNGs. Keep the original when replacing or re-exporting logo sizes.
+The original dark-background logo is preserved byte-for-byte at `assets/images/villagerr-logo-original.png` and remains the source of the unchanged browser favicons. The supplied transparent logo is preserved byte-for-byte at `assets/images/villagerr-logo-transparent-original.png`; its optimized 96px and 192px PNG copies are used in the homepage header/footer and custom 404 header. These retain the full canvas, alpha transparency, colors, gradients, and proportions, with no background, border, redraw, or crop added. Keep both original files when re-exporting sizes.
 
 ## Preview locally
 
